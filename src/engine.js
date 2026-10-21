@@ -38,7 +38,7 @@ export function auditFlow(flow) {
       return;
     }
     if (seen.has(id)) {
-      addIssue({ code: 'CYCLE', severity: 'error', stepId: id, title: 'Cycle has no exit', detail: `The path returns to “${step.title}” before it can finish.` });
+      addIssue({ code: 'CYCLE', severity: 'error', stepId: id, title: 'Path can loop before completion', detail: `The path returns to “${step.title}” before it can finish.` });
       paths.push({ steps: [...trail, id], status: 'blocked' });
       return;
     }
